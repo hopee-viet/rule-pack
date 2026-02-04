@@ -54,6 +54,16 @@ rule-pack/
 3. `pre-commit install`
 4. Mở project trong Cursor → AI tự load rules
 
+### Cursor đang mở project — chưa nhận rules ngay?
+
+Cursor chỉ load rules khi mở project. Nếu apply rules vào project **đang mở**, cần **reload**:
+
+- **Cmd+Shift+P** (Mac) hoặc **Ctrl+Shift+P** (Win/Linux)
+- Gõ: `Developer: Reload Window`
+- Enter
+
+Hoặc đóng project rồi mở lại.
+
 ## Enforce 3 lớp
 
 | Lớp | Mô tả |
@@ -63,6 +73,10 @@ rule-pack/
 | **3. AI context** | Cursor rules (.cursor/rules/*.mdc) |
 
 ## Troubleshooting
+
+### Cursor chưa nhận rules sau khi apply
+
+Project đang mở + vừa apply → Cursor chưa load rules. **Reload Window** (Cmd+Shift+P → Developer: Reload Window) hoặc đóng/mở lại project.
 
 ### import-linter fail
 

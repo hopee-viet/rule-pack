@@ -47,8 +47,12 @@ if [ ! -f "$TARGET/RULES.md" ]; then
   cp "$RULE_PACK_ROOT/RULES.md" "$TARGET/"
 fi
 
+echo ""
 echo "Configs applied. Next steps:"
 echo "  1. cd $TARGET"
 echo "  2. uv sync  # or poetry install"
 echo "  3. pre-commit install"
 echo "  4. pre-commit run --all-files"
+echo ""
+echo "⚠️  Nếu Cursor đang mở project: Reload để AI nhận rules ngay:"
+echo "   Cmd+Shift+P (Mac) hoặc Ctrl+Shift+P (Win) → \"Developer: Reload Window\""
