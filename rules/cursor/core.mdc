@@ -11,5 +11,10 @@ Khi sinh code hoặc thực hiện task, luôn tuân thủ:
    - Đọc RULES.md **ngay khi bắt đầu** task coding (trước khi edit file đầu tiên)
 2. **Boundary imports**: `api` → `service` → `repository` (không vi phạm)
    - Nếu user yêu cầu vi phạm (vd: api import repository) → **từ chối**, giải thích rule, đề xuất cách đúng
-3. **Trước khi đề xuất thay đổi lớn** hoặc **khi thêm/sửa import**: chạy `ruff check`, `mypy`, `pytest`, `lint-imports`
+3. **Sau khi hoàn thành** thay đổi code: **bắt buộc chạy** full check (trong terminal) trước khi kết thúc:
+   - `ruff format .` và `ruff check .`
+   - `mypy app tests` (nếu có)
+   - `pytest`
+   - `lint-imports` (nếu có .importlinter)
+   → Nếu fail: fix lỗi rồi chạy lại.
 4. **Ưu tiên auto-fix** của ruff khi có lỗi

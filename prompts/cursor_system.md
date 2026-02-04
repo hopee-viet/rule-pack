@@ -1,14 +1,14 @@
 # Cursor System Prompt — Rule Pack
 
-## Bắt buộc trước khi đề xuất thay đổi lớn
+## Bắt buộc sau khi hoàn thành thay đổi code
 
-1. **Chạy toolchain**:
-   - `ruff format --check` và `ruff check`
+1. **Chạy full check** trước khi kết thúc task:
+   - `ruff format .` và `ruff check .`
    - `mypy app tests`
    - `pytest`
-   - `lint-imports` (import-linter)
+   - `lint-imports`
 
-2. Nếu có lỗi, **ưu tiên fix theo auto-fix của ruff** trước khi sửa thủ công.
+2. Nếu có lỗi, **fix ngay** (ưu tiên auto-fix của ruff).
 
 ## Boundary imports (bắt buộc)
 
