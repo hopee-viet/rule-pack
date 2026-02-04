@@ -1,0 +1,37 @@
+---
+description: Python conventions và layering
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python Conventions
+
+## Boundary imports
+
+- `app.api` không import `app.repositories` trực tiếp — chỉ qua `app.deps` hoặc `app.services`
+- `app.services` không import `app.api`
+- `app.repositories` không import `app.api` hoặc `app.services`
+
+Flow: `api` → `service` → `repository`
+
+## Error handling
+
+Dùng `AppError` và subclasses. Map trong exception handler ở `app/main.py`.
+
+## Naming
+
+- Files: `snake_case`
+- Classes: `PascalCase`
+- Functions/vars: `snake_case`
+- Constants: `UPPER_SNAKE_CASE`
+
+## Logging
+
+- Log tập trung ở repositories (hoặc module logger riêng)
+- Không log trùng nhiều layer — một lỗi chỉ log 1 lần
+- Dùng `logger.info("msg", extra={...})` khi cần context
+
+## Validation
+
+- Dùng Pydantic cho request/response
+- ValidationError khi input invalid

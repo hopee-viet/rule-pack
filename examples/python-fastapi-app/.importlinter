@@ -1,0 +1,28 @@
+[importlinter]
+root_package = app
+
+[importlinter:contract:api-no-repo]
+name = API cannot import repositories directly
+type = forbidden
+source_modules =
+    app.api
+forbidden_modules =
+    app.repositories
+allow_indirect_imports = true
+
+[importlinter:contract:services-no-api]
+name = Services cannot import api
+type = forbidden
+source_modules =
+    app.services
+forbidden_modules =
+    app.api
+
+[importlinter:contract:repos-no-api-services]
+name = Repositories cannot import api or services
+type = forbidden
+source_modules =
+    app.repositories
+forbidden_modules =
+    app.api
+    app.services

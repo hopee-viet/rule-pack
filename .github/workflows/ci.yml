@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: |
+          cd examples/python-fastapi-app
+          uv sync
+
+      - name: Ruff format check
+        run: |
+          cd examples/python-fastapi-app
+          uv run ruff format --check .
+
+      - name: Ruff check
+        run: |
+          cd examples/python-fastapi-app
+          uv run ruff check .
+
+      - name: Mypy
+        run: |
+          cd examples/python-fastapi-app
+          uv run mypy app tests
+
+      - name: Pytest
+        run: |
+          cd examples/python-fastapi-app
+          uv run pytest
+
+      - name: Import-linter
+        run: |
+          cd examples/python-fastapi-app
+          uv run lint-imports
