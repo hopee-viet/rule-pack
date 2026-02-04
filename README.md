@@ -50,9 +50,11 @@ rule-pack/
 ## Sau khi apply
 
 1. `cd /path/to/your-project`
-2. `uv sync` (hoặc `pip install -e ".[dev]"`)
+2. `uv sync` — apply.sh đã thêm ruff, mypy, pytest, pre-commit, import-linter vào dev deps
 3. `pre-commit install`
 4. Mở project trong Cursor → AI tự load rules
+
+**Lưu ý:** AI chạy check bằng `uv run ruff`, `uv run pytest`... (từ project venv). Cần `uv sync` trước.
 
 ### Cursor đang mở project — chưa nhận rules ngay?
 
@@ -81,6 +83,10 @@ Project đang mở + vừa apply → Cursor chưa load rules. **Reload Window** 
 ### import-linter fail
 
 Kiểm tra boundary: `api` không import `repositories` trực tiếp. Chỉ `api` → `services` → `repositories`.
+
+### ruff/mypy: command not found
+
+Chạy `uv sync` trong project. AI dùng `uv run ruff` để chạy từ venv — cần dev deps đã cài.
 
 ### pre-commit fail
 

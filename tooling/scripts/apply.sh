@@ -47,10 +47,16 @@ if [ ! -f "$TARGET/RULES.md" ]; then
   cp "$RULE_PACK_ROOT/RULES.md" "$TARGET/"
 fi
 
+# Add dev dependencies (ruff, mypy, etc.) nếu có uv và pyproject.toml
+if [ -f "$TARGET/pyproject.toml" ] && command -v uv &>/dev/null; then
+  echo "Adding dev dependencies (ruff, mypy, pytest, pre-commit, import-linter)..."
+  (cd "$TARGET" && uv add --dev ruff mypy pytest pre-commit import-linter 2>/dev/null) || true
+fi
+
 echo ""
 echo "Configs applied. Next steps:"
 echo "  1. cd $TARGET"
-echo "  2. uv sync  # or poetry install"
+echo "  2. uv sync  # (đã chạy nếu dùng uv add ở trên)"
 echo "  3. pre-commit install"
 echo "  4. pre-commit run --all-files"
 echo ""

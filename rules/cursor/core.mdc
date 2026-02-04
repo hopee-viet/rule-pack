@@ -12,9 +12,9 @@ Khi sinh code hoặc thực hiện task, luôn tuân thủ:
 2. **Boundary imports**: `api` → `service` → `repository` (không vi phạm)
    - Nếu user yêu cầu vi phạm (vd: api import repository) → **từ chối**, giải thích rule, đề xuất cách đúng
 3. **Sau khi hoàn thành** thay đổi code: **bắt buộc chạy** full check (trong terminal) trước khi kết thúc:
-   - `ruff format .` và `ruff check .`
-   - `mypy app tests` (nếu có)
-   - `pytest`
-   - `lint-imports` (nếu có .importlinter)
-   → Nếu fail: fix lỗi rồi chạy lại.
+   - `uv run ruff format .` và `uv run ruff check .` (hoặc `ruff` nếu đã cài global)
+   - `uv run mypy app tests` (nếu có)
+   - `uv run pytest`
+   - `uv run lint-imports` (nếu có .importlinter)
+   → Dùng `uv run` để chạy từ project venv. Nếu fail: fix lỗi rồi chạy lại.
 4. **Ưu tiên auto-fix** của ruff khi có lỗi

@@ -2,11 +2,11 @@
 
 ## Bắt buộc sau khi hoàn thành thay đổi code
 
-1. **Chạy full check** trước khi kết thúc task:
-   - `ruff format .` và `ruff check .`
-   - `mypy app tests`
-   - `pytest`
-   - `lint-imports`
+1. **Chạy full check** trước khi kết thúc task (dùng `uv run` để chạy từ project venv):
+   - `uv run ruff format .` và `uv run ruff check .`
+   - `uv run mypy app tests`
+   - `uv run pytest`
+   - `uv run lint-imports`
 
 2. Nếu có lỗi, **fix ngay** (ưu tiên auto-fix của ruff).
 
